@@ -19,6 +19,6 @@ public class MemberService {
     }
 
     public Optional<Member> getMember(Long id){
-        return memberRepository.findById(Math.toIntExact(id));
+        return memberRepository.findById(id);
     }
 }

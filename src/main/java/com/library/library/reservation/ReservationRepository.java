@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
+public interface ReservationRepository extends JpaRepository<Reservation, Long> {
     public List<Reservation> findByBookAndNotifiedAndOrderByDateTimeDesc(Book book, boolean notified);
 
     public List<Reservation> findByMemberAndNotifiedAndOrderByDateTimeDesc(Member member, boolean notified);
