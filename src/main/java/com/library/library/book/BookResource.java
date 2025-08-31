@@ -18,7 +18,10 @@ public class BookResource {
 
     @PostMapping("/books")
     public Book createBook(@RequestBody Book book){
-        return this.createBook(book);
+        if (book == null) {
+            throw new IllegalArgumentException("Book data must not be null");
+        }
+        return bookService.createBook(book);
     }
 
     @GetMapping("/books")
