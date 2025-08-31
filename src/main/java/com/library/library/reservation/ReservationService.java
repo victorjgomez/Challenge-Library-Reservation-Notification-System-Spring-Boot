@@ -24,7 +24,7 @@ public class ReservationService {
     }
 
     public Reservation callPendingNotifications(Borrow borrow){
-        List<Reservation> reservations = this.reservationRepository.findByBookAndNotifiedAndOrderByDateTimeDesc(borrow.getBook(), false);
+        List<Reservation> reservations = this.reservationRepository.findByBookAndNotifiedOrderByDateTimeDesc(borrow.getBook(), false);
 
         if(reservations.isEmpty()){
             return null;
@@ -39,7 +39,7 @@ public class ReservationService {
     }
 
     public List<Reservation> returnPendingNotifications(Member member){
-        return this.reservationRepository.findByMemberAndNotifiedAndOrderByDateTimeDesc(member, false);
+        return this.reservationRepository.findByMemberAndNotifiedOrderByDateTimeDesc(member, false);
     }
 
 

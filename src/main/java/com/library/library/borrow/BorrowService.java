@@ -27,7 +27,7 @@ public class BorrowService {
     }
 
     public Optional<Borrow> getByBookAndMember(Book book, Member member){
-        return this.borrowRepository.findByBookAndMemberAndDelivery(book, member, false);
+        return this.borrowRepository.findByBookAndMemberAndDeliver(book, member, false);
     }
 
     public synchronized Borrow createBorrow(Borrow borrow){
