@@ -5,6 +5,8 @@ import com.library.library.member.Member;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 import java.time.LocalDate;
 
@@ -15,8 +17,12 @@ public class Borrow {
     @GeneratedValue
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "book_isbn", referencedColumnName = "isbn")
     private Book book;
 
+    @ManyToOne
+    @JoinColumn(name = "member_id", referencedColumnName = "id")
     private Member member;
 
 
