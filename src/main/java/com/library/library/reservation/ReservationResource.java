@@ -39,7 +39,13 @@ public class ReservationResource {
                     .body("memberId or isbn not found");
         }
 
-        Reservation reservation = reservationService.createReservation(new Reservation(bookOptional.get(),
+        Book book = bookOptional.get();
+        if (book.getStock() > 0) {
+            return ResponseEntity.status(HttpStatus.CONFLICT)
+                    .body("Book is currently in stock");
+        }
+
+        Reservation reservation = reservationService.createReservation(new Reservation(book,
                 memberOptional.get()));
 
         return ResponseEntity.status(HttpStatus.OK).body(reservation);
