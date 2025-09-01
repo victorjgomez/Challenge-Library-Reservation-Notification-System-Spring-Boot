@@ -28,13 +28,13 @@ public class BookService {
     }
 
     public synchronized Book decreaseStock(Book book){
-        if (book.getStock() < 0){
-            throw new RuntimeException("There is not stock available for this book");
+        if (book.getStock() <= 0) {
+            throw new OutOfStockException("There is not stock available for this book");
         }
 
-       book.setStock(book.getStock() - 1);
+        book.setStock(book.getStock() - 1);
 
-       return this.bookRepository.save(book);
+        return this.bookRepository.save(book);
     }
 
     public synchronized Book increaseStock(Book book){
