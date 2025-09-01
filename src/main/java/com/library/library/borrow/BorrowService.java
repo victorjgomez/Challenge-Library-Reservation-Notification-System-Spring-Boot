@@ -31,6 +31,13 @@ public class BorrowService {
     }
 
     public synchronized Borrow createBorrow(Borrow borrow){
+        Optional<Borrow> existing = this.borrowRepository
+                .findByBookAndMemberAndDeliver(borrow.getBook(), borrow.getMember(), false);
+
+        if(existing.isPresent()){
+            return existing.get();
+        }
+
         this.bookService.decreaseStock(borrow.getBook());
 
         return borrowRepository.save(borrow);
