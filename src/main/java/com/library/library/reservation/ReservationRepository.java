@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
-    public List<Reservation> findByBookAndNotifiedOrderByDateTimeDesc(Book book, boolean notified);
+    public List<Reservation> findByBookAndNotifiedOrderByDateTimeAsc(Book book, boolean notified);
 
     public List<Reservation> findByMemberAndNotifiedOrderByDateTimeDesc(Member member, boolean notified);
 }
