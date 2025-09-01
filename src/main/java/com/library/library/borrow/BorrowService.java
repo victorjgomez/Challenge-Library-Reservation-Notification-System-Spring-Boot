@@ -56,9 +56,11 @@ public class BorrowService {
     }
 
     public List<Borrow> getAllByRule(){
-        LocalDate nowMinus2Days = LocalDate.now().minusDays(2);
+        LocalDate now = LocalDate.now();
 
-        return borrowRepository.findAllByDeliverAndDateLessThanEqual(false, nowMinus2Days);
+        return borrowRepository.findAllByDeliver(false).stream()
+                .filter(borrow -> !borrow.getDueDate().minusDays(2).isAfter(now))
+                .toList();
     }
 
     public List<Member> getAllMemberWithOverDue(){

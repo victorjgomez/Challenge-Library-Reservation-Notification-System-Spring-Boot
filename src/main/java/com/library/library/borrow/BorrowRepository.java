@@ -14,4 +14,6 @@ public interface BorrowRepository extends JpaRepository<Borrow, Integer> {
     public List<Borrow> findAllByDeliverAndDateBetween(boolean deliver, LocalDate from, LocalDate to);
 
     public List<Borrow> findAllByDeliverAndDateLessThanEqual(boolean deliver, LocalDate date);
+
+    public List<Borrow> findAllByDeliver(boolean deliver);
 }
