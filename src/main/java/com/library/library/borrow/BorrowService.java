@@ -6,6 +6,7 @@ import com.library.library.book.BookService;
 import com.library.library.member.Member;
 import com.library.library.reservation.Reservation;
 import com.library.library.reservation.ReservationService;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -65,6 +66,10 @@ public class BorrowService {
         LocalDate now = LocalDate.now();
 
         return borrowRepository.findAllByDeliverAndDateLessThanEqual(false, now).stream().map(Borrow::getMember).toList();
+    }
+
+    public List<Book> getTopBorrowedBooks(int limit){
+        return borrowRepository.findTopBorrowedBooks(PageRequest.of(0, limit));
     }
 
 
