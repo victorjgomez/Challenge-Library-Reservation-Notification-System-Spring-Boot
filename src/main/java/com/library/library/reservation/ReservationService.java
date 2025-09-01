@@ -24,7 +24,7 @@ public class ReservationService {
     }
 
     public Reservation callPendingNotifications(Borrow borrow){
-        List<Reservation> reservations = this.reservationRepository.findByBookAndNotifiedOrderByDateTimeDesc(borrow.getBook(), false);
+        List<Reservation> reservations = this.reservationRepository.findByBookAndNotifiedOrderByDateTimeAsc(borrow.getBook(), false);
 
         if(reservations.isEmpty()){
             return null;
