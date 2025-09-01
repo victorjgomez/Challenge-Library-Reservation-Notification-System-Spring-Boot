@@ -55,7 +55,7 @@ public class BorrowResource {
 
         Optional<Borrow> borrowOptional = borrowService.getByBookAndMember(bookOptional.get(), memberOptional.get());
 
-        if(bookOptional.isEmpty()){
+        if(borrowOptional.isEmpty()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("borrow not found");
         }
 
