@@ -28,6 +28,8 @@ public class Borrow {
 
     private LocalDate date;
 
+    private LocalDate dueDate;
+
     private int duration = 7;
 
     private boolean deliver = false;
@@ -40,6 +42,7 @@ public class Borrow {
         this.member = member;
         this.date = LocalDate.now();
         this.duration = 7;
+        this.dueDate = this.date.plusDays(this.duration);
         this.deliver = false;
     }
 
@@ -73,6 +76,7 @@ public class Borrow {
 
     public void setDate(LocalDate date) {
         this.date = date;
+        this.dueDate = this.date.plusDays(this.duration);
     }
 
     public int getDuration() {
@@ -81,6 +85,7 @@ public class Borrow {
 
     public void setDuration(int duration) {
         this.duration = duration;
+        this.dueDate = this.date.plusDays(this.duration);
     }
 
     public boolean isDeliver() {
@@ -91,6 +96,14 @@ public class Borrow {
         this.deliver = deliver;
     }
 
+    public LocalDate getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
+    }
+
     @Override
     public String toString() {
         return "Borrow{" +
@@ -98,6 +111,7 @@ public class Borrow {
                 ", book=" + book +
                 ", member=" + member +
                 ", date=" + date +
+                ", dueDate=" + dueDate +
                 ", duration=" + duration +
                 ", deliver=" + deliver +
                 '}';

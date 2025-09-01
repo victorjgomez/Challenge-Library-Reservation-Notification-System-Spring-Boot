@@ -17,6 +17,10 @@ public interface BorrowRepository extends JpaRepository<Borrow, Integer> {
 
     public List<Borrow> findAllByDeliverAndDateLessThanEqual(boolean deliver, LocalDate date);
 
+
+    public List<Borrow> findAllByDeliver(boolean deliver);
+  
     @Query("SELECT b.book FROM Borrow b GROUP BY b.book ORDER BY COUNT(b) DESC")
     List<Book> findTopBorrowedBooks(Pageable pageable);
+
 }
